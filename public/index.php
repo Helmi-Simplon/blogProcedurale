@@ -15,13 +15,14 @@ try {
         require $path . '/controller/postController.php';
         show();
     } elseif ($page === 'user.connect') {
-        require 'connectionForm.php';
+       require $path . '/view/user/connectionForm.php';
     } else {
         throw new Exception('404');
     }
 } catch (Exception $e) {
     require $path . '/controller/errorController.php';
+    error($e);
 }
 $content = ob_get_clean();
 
-require $path . 'view/base.php';
+require '../view/base.php';
